@@ -51,3 +51,20 @@ If you want to build any of the examples (such as mono_euroc), do the following:
 - Right click on it and press build
 
 Then you will find them, say if you do mono_, in (orbslam-windows\Examples\Monocular\Release)
+
+
+--------------------------------------------------------------------------
+
+- Updated by Muphys
+
+- To avoid a common problem that CMake in Win10 may not find the opencv path, I highly recommand using Property Sheet to link the opencv path to your project after
+  generating the project with CMake. 
+
+- So if you take a look of the CMakeLists files of DBOW2 and ORB_SLAM, you may find that the opencv's find_package parts have been commented. In this way you can configure
+  and generate the project with CMake easier.
+
+- However, this doesn't mean that you can build and run the project without opencv. After generating the VS projects with CMake, you should add a property sheet that 
+  contains the path of opencv to your projects in VS. You should make your property sheet before this step.
+
+- Sometimes there are still some link errors during building projects in VS after you finish all the steps mentioned above. Right click the project -> Properties -> Linker
+  -> Input and check whether the opencv path is involved in. If not, check the box that lets the value inherited from its parents.
